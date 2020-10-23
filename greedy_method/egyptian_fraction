@@ -1,0 +1,50 @@
+"""
+Every positive fraction can be represented as sum of unique unit fractions. 
+A fraction is unit fraction if numerator is 1 and 
+denominator is a positive integer, for example 1/3 is a unit fraction.
+"""
+
+import math 
+
+def egyptianFraction(nr, dr): 
+    """
+
+    Function description is as follows-
+    :param nr: Take a numerator
+    :param dr: Take a denominator
+    :return: Greatest possible unit fraction
+    >>> egyptianFraction(6, 14)
+    """
+  
+    print("The Egyptian Fraction " +
+          "Representation of {0}/{1} is". 
+                format(nr, dr), end="\n") 
+ 
+    ef = [] 
+  
+    while nr != 0: 
+
+        x = math.ceil(dr / nr) 
+ 
+        ef.append(x) 
+ 
+        nr = x * nr - dr 
+        dr = dr * x
+
+    return ef 
+ 
+
+if __name__ == "__main__":
+
+    nr = int(input())
+    dr = int(input())
+
+    ef = egyptianFraction(nr, dr)
+    for i in range(len(ef)): 
+        if i != len(ef) - 1: 
+            print(" 1/{0} +" .  
+                    format(ef[i]), end = " ") 
+        else: 
+            print(" 1/{0}" . 
+                    format(ef[i]), end = " ") 
+    
